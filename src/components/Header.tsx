@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import LogoImg from "../assets/shared/logo.svg";
 import BurgerImg from "../assets/shared/icon-hamburger.svg";
 
@@ -24,7 +24,7 @@ function Header(props: HeaderProps) {
 export default Header;
 
 const Container = styled.div`
-  padding: 24px 0;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;

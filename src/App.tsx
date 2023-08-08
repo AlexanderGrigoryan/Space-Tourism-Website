@@ -2,9 +2,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import GlobalStyles from "./components/GlobalStyles";
 import { Route, Routes, useLocation } from "react-router";
 import Home from "./components/Home";
-import Header from "./components/Header";
-import { styled } from "styled-components";
-import MobileBackground from "./assets/home/background-home-mobile.jpg";
+import styled from "styled-components";
 import { useState } from "react";
 import BurgerMenu from "./components/BurgerMenu";
 import Destination from "./pages/Destination";
@@ -29,13 +27,18 @@ function App() {
         </Helmet>
       </HelmetProvider>
       <MainContainer>
-        <Header menu={menu} setMenu={setMenu} />
         {menu ? <BurgerMenu setMenu={setMenu} pathname={pathname} /> : null}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="crew" element={<Crew />} />
-          <Route path="technology" element={<Technology />} />
+          <Route path="/" element={<Home menu={menu} setMenu={setMenu} />} />
+          <Route
+            path="/destination"
+            element={<Destination menu={menu} setMenu={setMenu} />}
+          />
+          <Route path="crew" element={<Crew menu={menu} setMenu={setMenu} />} />
+          <Route
+            path="technology"
+            element={<Technology menu={menu} setMenu={setMenu} />}
+          />
         </Routes>
       </MainContainer>
     </>
@@ -44,11 +47,4 @@ function App() {
 
 export default App;
 
-const MainContainer = styled.div`
-  padding: 0 24px;
-  background-image: url(${MobileBackground});
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
-`;
+const MainContainer = styled.div``;

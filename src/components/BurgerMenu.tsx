@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import CloseImg from "../assets/shared/icon-close.svg";
 import { Link } from "react-router-dom";
 
@@ -44,7 +44,11 @@ function BurgerMenu(props: BurgerMenuProps) {
             <List>
               <Link
                 key={index}
-                style={{ display: "flex", columnGap: "12px" }}
+                style={{
+                  display: "flex",
+                  columnGap: "12px",
+                  textDecoration: "none",
+                }}
                 to={item.path}
               >
                 <Number>{item.number}</Number>
