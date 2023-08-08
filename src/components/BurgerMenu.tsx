@@ -5,32 +5,55 @@ import { Link } from "react-router-dom";
 
 interface BurgerMenuProps {
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  pathname: string;
 }
 
 function BurgerMenu(props: BurgerMenuProps) {
-  const { setMenu } = props;
+  const { setMenu, pathname } = props;
+
+  const linkList = [
+    {
+      number: "00",
+      name: "home",
+      path: "/",
+    },
+    {
+      number: "01",
+      name: "destination",
+      path: "/destination",
+    },
+    {
+      number: "02",
+      name: "crew",
+      path: "/crew",
+    },
+    {
+      number: "03",
+      name: "technology",
+      path: "/technology",
+    },
+  ];
   return (
     <Container>
       <CloseButton onClick={() => setMenu(false)}>
         <CloseIcon src={CloseImg} alt="close icon" />
       </CloseButton>
       <Nav>
-        <Link style={{ display: "flex", columnGap: "12px" }} to="/">
-          <Number>00</Number>
-          <LinkName>Home</LinkName>
-        </Link>
-        <Link style={{ display: "flex", columnGap: "12px" }} to="/destination">
-          <Number>01</Number>
-          <LinkName>Destination</LinkName>
-        </Link>
-        <Link style={{ display: "flex", columnGap: "12px" }} to="/crew">
-          <Number>02</Number>
-          <LinkName>Crew</LinkName>
-        </Link>
-        <Link style={{ display: "flex", columnGap: "12px" }} to="/technology">
-          <Number>03</Number>
-          <LinkName>Technology</LinkName>
-        </Link>
+        {linkList.map((item, index) => {
+          return (
+            <List>
+              <Link
+                key={index}
+                style={{ display: "flex", columnGap: "12px" }}
+                to={item.path}
+              >
+                <Number>{item.number}</Number>
+                <LinkName>{item.name}</LinkName>
+              </Link>
+              {pathname == item.path ? <ActiveLine></ActiveLine> : null}
+            </List>
+          );
+        })}
       </Nav>
     </Container>
   );
@@ -68,6 +91,12 @@ const Nav = styled.nav`
   row-gap: 32px;
 `;
 
+const List = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const Number = styled.span`
   color: #fff;
   font-family: "Barlow Condensed", sans-serif;
@@ -80,4 +109,12 @@ const Number = styled.span`
 
 const LinkName = styled(Number)`
   font-weight: 400;
+`;
+
+const ActiveLine = styled.div`
+  width: 4px;
+  height: 31px;
+  background: white;
+  position: absolute;
+  right: 0;
 `;
