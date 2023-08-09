@@ -20,7 +20,7 @@ function BurgerMenu(props: BurgerMenuProps) {
     {
       number: "01",
       name: "destination",
-      path: "/destination",
+      path: "/destination/moon",
     },
     {
       number: "02",
@@ -41,9 +41,8 @@ function BurgerMenu(props: BurgerMenuProps) {
       <Nav>
         {linkList.map((item, index) => {
           return (
-            <List>
+            <List key={index}>
               <Link
-                key={index}
                 style={{
                   display: "flex",
                   columnGap: "12px",

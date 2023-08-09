@@ -25,6 +25,7 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   min-height: 100vh;
+  padding: 0 24px;
 `;
 
 const Content = styled.div``;

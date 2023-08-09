@@ -24,7 +24,7 @@ function Header(props: HeaderProps) {
 export default Header;
 
 const Container = styled.div`
-  padding: 24px;
+  padding: 24px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

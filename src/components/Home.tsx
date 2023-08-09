@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MobileBackground from "../assets/home/background-home-mobile.jpg";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 interface HomeProps {
   menu: boolean;
@@ -23,7 +24,9 @@ function Home(props: HomeProps) {
             world experience!
           </Subtext>
         </Info>
-        <Button>Explore</Button>
+        <Button>
+          <StyledLink to="/destination">Explore</StyledLink>
+        </Button>
       </Content>
     </Container>
   );
@@ -37,11 +40,11 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   min-height: 100vh;
+  padding: 0 24px;
 `;
 
 const Content = styled.div`
-  padding-top: 48px;
-  padding: 0 24px;
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,11 +88,15 @@ const Button = styled.button`
   border: none;
   background: white;
   cursor: pointer;
+`;
+
+const StyledLink = styled(Link)`
   font-family: "Bellefair", serif;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  color: #0b0d17;
+  text-decoration: none;
   text-align: center;
+  color: #0b0d17;
 `;

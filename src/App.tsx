@@ -1,6 +1,6 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import GlobalStyles from "./components/GlobalStyles";
-import { Route, Routes, useLocation } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import Home from "./components/Home";
 import styled from "styled-components";
 import { useState } from "react";
@@ -31,8 +31,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home menu={menu} setMenu={setMenu} />} />
           <Route
-            path="/destination"
+            path="/destination/:name"
             element={<Destination menu={menu} setMenu={setMenu} />}
+          />
+          <Route
+            path="/destination/"
+            element={<Navigate to="/destination/moon" />}
           />
           <Route path="crew" element={<Crew menu={menu} setMenu={setMenu} />} />
           <Route
