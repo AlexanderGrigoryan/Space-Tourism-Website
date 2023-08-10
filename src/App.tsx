@@ -27,7 +27,7 @@ function App() {
         </Helmet>
       </HelmetProvider>
       <MainContainer>
-        {menu ? <BurgerMenu setMenu={setMenu} pathname={pathname} /> : null}
+        {menu ? <BurgerMenu menu={menu} setMenu={setMenu} pathname={pathname} /> : null}
         <Routes>
           <Route path="/" element={<Home menu={menu} setMenu={setMenu} />} />
           <Route
