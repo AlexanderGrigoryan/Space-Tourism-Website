@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../data.json";
 import styled, { css } from "styled-components";
 
@@ -9,6 +9,8 @@ interface CrewSliderProps {
 
 function CrewSlider(props: CrewSliderProps) {
   const { teamMember, setTeamMember } = props;
+  const [activeButton, setActiveButton] = useState<boolean>(true);
+
   return (
     <>
       {data.crew.map((item) =>
@@ -23,20 +25,34 @@ function CrewSlider(props: CrewSliderProps) {
       <MemberLine></MemberLine>
       <Pagination>
         <PaginationButton
-          onClick={() => setTeamMember("Douglas Hurley")}
+          activeButton={teamMember === "Douglas Hurley" && activeButton}
+          onClick={() => {
+            setTeamMember("Douglas Hurley");
+            setActiveButton(true);
+          }}
         ></PaginationButton>
         <PaginationButton
-          onClick={() => setTeamMember("Mark Shuttleworth")}
+          activeButton={teamMember === "Mark Shuttleworth" && activeButton}
+          onClick={() => {
+            setTeamMember("Mark Shuttleworth");
+            setActiveButton(true);
+          }}
         ></PaginationButton>
         <PaginationButton
-          onClick={() => setTeamMember("Victor Glover")}
+          activeButton={teamMember === "Victor Glover" && activeButton}
+          onClick={() => {
+            setTeamMember("Victor Glover");
+            setActiveButton(true);
+          }}
         ></PaginationButton>
         <PaginationButton
-          onClick={() => setTeamMember("Anousheh Ansari")}
+          activeButton={teamMember === "Anousheh Ansari" && activeButton}
+          onClick={() => {
+            setTeamMember("Anousheh Ansari");
+            setActiveButton(true);
+          }}
         ></PaginationButton>
       </Pagination>
-
-    
     </>
   );
 }
@@ -68,19 +84,24 @@ const Pagination = styled.div`
   margin: 32px 0;
 `;
 
-const PaginationButton = styled.button`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.174363);
-  cursor: pointer;
-`;
+interface PaginationButtonProps {
+  activeButton: boolean;
+}
 
+const PaginationButton = styled.button(
+  (props: PaginationButtonProps) => css`
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: ${props.activeButton
+      ? "#FFFFFF"
+      : "rgba(255, 255, 255, 0.174363)"};
+  `
+);
 const MemberLine = styled.div`
   width: 327px;
   height: 1px;
   background: #383b4b;
 `;
-
-

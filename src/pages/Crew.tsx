@@ -15,6 +15,8 @@ function Crew(props: CrewProps) {
 
   const [teamMember, setTeamMember] = useState<string>("Douglas Hurley");
 
+  const member = data.crew.find((element) => element.name === teamMember);
+
   return (
     <Container>
       <Header menu={menu} setMenu={setMenu} />
@@ -25,7 +27,7 @@ function Crew(props: CrewProps) {
         </Title>
         <CrewSlider teamMember={teamMember} setTeamMember={setTeamMember} />
         {data.crew.map((item) =>
-          teamMember === item.name ? (
+          member?.name === item.name ? (
             <MemberInfo key={item.name}>
               <MemberRole>{item.role}</MemberRole>
               <MemberName>{item.name}</MemberName>
