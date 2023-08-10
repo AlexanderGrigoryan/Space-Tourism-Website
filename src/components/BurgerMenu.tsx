@@ -73,6 +73,7 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 100;
   padding: 34px 27px 0 32px;
   display: flex;
   flex-direction: column;
