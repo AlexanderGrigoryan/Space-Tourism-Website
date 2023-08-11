@@ -4,14 +4,17 @@ import styled from "styled-components";
 import TechnoSlider from "../components/TechnoSlider";
 import { useState } from "react";
 import data from "../data.json";
+import { linkListType } from "../types";
 
 interface TechnologyProps {
   menu: boolean;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  linkList: linkListType[];
+  pathname: string;
 }
 
 function Technology(props: TechnologyProps) {
-  const { menu, setMenu } = props;
+  const { menu, setMenu, linkList, pathname } = props;
   const [category, setCategory] = useState<string>("Launch vehicle");
 
   const categories = data.technology.find(
@@ -20,7 +23,12 @@ function Technology(props: TechnologyProps) {
 
   return (
     <Container>
-      <Header menu={menu} setMenu={setMenu} />
+      <Header
+        menu={menu}
+        setMenu={setMenu}
+        linkList={linkList}
+        pathname={pathname}
+      />
       <Content>
         <Title>
           <Number>03</Number>
@@ -42,8 +50,6 @@ function Technology(props: TechnologyProps) {
 }
 
 export default Technology;
-
-
 
 const Container = styled.div`
   background-image: url(${MobileBackground});

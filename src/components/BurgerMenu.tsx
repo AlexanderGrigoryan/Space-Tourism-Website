@@ -2,15 +2,17 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import CloseImg from "../assets/shared/icon-close.svg";
 import { Link } from "react-router-dom";
+import { linkListType } from "../types";
 
 interface BurgerMenuProps {
   menu: boolean;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   pathname: string;
+  linkList: linkListType[];
 }
 
 function BurgerMenu(props: BurgerMenuProps) {
-  const { menu, setMenu, pathname } = props;
+  const { menu, setMenu, pathname, linkList } = props;
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -29,30 +31,8 @@ function BurgerMenu(props: BurgerMenuProps) {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [menu]);
+  }, [menu, setMenu]);
 
-  const linkList = [
-    {
-      number: "00",
-      name: "home",
-      path: "/",
-    },
-    {
-      number: "01",
-      name: "destination",
-      path: "/destination/moon",
-    },
-    {
-      number: "02",
-      name: "crew",
-      path: "/crew",
-    },
-    {
-      number: "03",
-      name: "technology",
-      path: "/technology",
-    },
-  ];
   return (
     <Container ref={menuRef}>
       <CloseButton onClick={() => setMenu(false)}>

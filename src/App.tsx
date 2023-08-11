@@ -15,6 +15,29 @@ function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
+  const linkList = [
+    {
+      number: "00",
+      name: "home",
+      path: "/",
+    },
+    {
+      number: "01",
+      name: "destination",
+      path: "/destination/moon",
+    },
+    {
+      number: "02",
+      name: "crew",
+      path: "/crew",
+    },
+    {
+      number: "03",
+      name: "technology",
+      path: "/technology",
+    },
+  ];
+
   return (
     <>
       <GlobalStyles />
@@ -27,21 +50,38 @@ function App() {
         </Helmet>
       </HelmetProvider>
       <MainContainer>
-        {menu ? <BurgerMenu menu={menu} setMenu={setMenu} pathname={pathname} /> : null}
+        {menu ? (
+          <BurgerMenu
+            linkList={linkList}
+            menu={menu}
+            setMenu={setMenu}
+            pathname={pathname}
+          />
+        ) : null}
         <Routes>
-          <Route path="/" element={<Home menu={menu} setMenu={setMenu} />} />
+          <Route
+            path="/"
+            element={<Home pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />}
+          />
           <Route
             path="/destination/:name"
-            element={<Destination menu={menu} setMenu={setMenu} />}
+            element={
+              <Destination pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />
+            }
           />
           <Route
             path="/destination/"
             element={<Navigate to="/destination/moon" />}
           />
-          <Route path="crew" element={<Crew menu={menu} setMenu={setMenu} />} />
+          <Route
+            path="crew"
+            element={<Crew pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />}
+          />
           <Route
             path="technology"
-            element={<Technology menu={menu} setMenu={setMenu} />}
+            element={
+              <Technology pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />
+            }
           />
         </Routes>
       </MainContainer>

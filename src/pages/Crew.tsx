@@ -4,14 +4,17 @@ import styled from "styled-components";
 import CrewSlider from "../components/CrewSlider";
 import { useState } from "react";
 import data from "../data.json";
+import { linkListType } from "../types";
 
 interface CrewProps {
   menu: boolean;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  linkList: linkListType[];
+  pathname: string;
 }
 
 function Crew(props: CrewProps) {
-  const { menu, setMenu } = props;
+  const { menu, setMenu, linkList, pathname } = props;
 
   const [teamMember, setTeamMember] = useState<string>("Douglas Hurley");
 
@@ -19,7 +22,12 @@ function Crew(props: CrewProps) {
 
   return (
     <Container>
-      <Header menu={menu} setMenu={setMenu} />
+      <Header
+        menu={menu}
+        setMenu={setMenu}
+        linkList={linkList}
+        pathname={pathname}
+      />
       <Content>
         <Title>
           <Number>02</Number>

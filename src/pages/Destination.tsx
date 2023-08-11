@@ -4,14 +4,17 @@ import styled from "styled-components";
 import data from "../data.json";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { linkListType } from "../types";
 
 interface DestinationProps {
   menu: boolean;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  linkList: linkListType[];
+  pathname: string;
 }
 
 function Destination(props: DestinationProps) {
-  const { menu, setMenu } = props;
+  const { menu, setMenu, linkList, pathname } = props;
   const [activePlanet, setActivePlanet] = useState<string>("moon");
 
   const params = useParams();
@@ -21,7 +24,12 @@ function Destination(props: DestinationProps) {
 
   return (
     <Container>
-      <Header menu={menu} setMenu={setMenu} />
+      <Header
+        menu={menu}
+        setMenu={setMenu}
+        linkList={linkList}
+        pathname={pathname}
+      />
       <Content>
         <Title>
           <Number>01</Number>
