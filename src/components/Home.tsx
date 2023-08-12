@@ -72,6 +72,7 @@ const Content = styled.div`
 
   @media screen and (min-width: 768px) {
     padding-top: 84px;
+    padding-bottom: 50px;
     row-gap: 156px;
   }
 
@@ -80,7 +81,6 @@ const Content = styled.div`
     justify-content: space-between;
     padding: 0 75px;
     margin-top: 251px;
-    padding-bottom: 50px;
   }
 
   @media screen and (min-width: 1440px) {
