@@ -11,6 +11,7 @@ import Technology from "./pages/Technology";
 
 function App() {
   const [menu, setMenu] = useState<boolean>(false);
+  
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -61,12 +62,24 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />}
+            element={
+              <Home
+                pathname={pathname}
+                linkList={linkList}
+                menu={menu}
+                setMenu={setMenu}
+              />
+            }
           />
           <Route
             path="/destination/:name"
             element={
-              <Destination pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />
+              <Destination
+                pathname={pathname}
+                linkList={linkList}
+                menu={menu}
+                setMenu={setMenu}
+              />
             }
           />
           <Route
@@ -75,12 +88,24 @@ function App() {
           />
           <Route
             path="crew"
-            element={<Crew pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />}
+            element={
+              <Crew
+                pathname={pathname}
+                linkList={linkList}
+                menu={menu}
+                setMenu={setMenu}
+              />
+            }
           />
           <Route
             path="technology"
             element={
-              <Technology pathname={pathname} linkList={linkList} menu={menu} setMenu={setMenu} />
+              <Technology
+                pathname={pathname}
+                linkList={linkList}
+                menu={menu}
+                setMenu={setMenu}
+              />
             }
           />
         </Routes>

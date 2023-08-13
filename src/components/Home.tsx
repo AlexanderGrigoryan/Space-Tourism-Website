@@ -35,9 +35,13 @@ function Home(props: HomeProps) {
             world experience!
           </Subtext>
         </Info>
-        <Button>
+        {/* <Button>
           <StyledLink to="/destination">Explore</StyledLink>
-        </Button>
+        </Button> */}
+
+        <StyledLink to="/destination">
+          <Button>Explore</Button>
+        </StyledLink>
       </Content>
     </Container>
   );
@@ -161,12 +165,21 @@ const Button = styled.button`
   height: 150px;
   border-radius: 50%;
   border: none;
-  background: white;
   cursor: pointer;
+  background: white;
+  font-family: "Bellefair", serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #0b0d17;
 
   @media screen and (min-width: 768px) {
     width: 242px;
     height: 242px;
+    font-size: 32px;
+    letter-spacing: 2px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -176,17 +189,5 @@ const Button = styled.button`
 `;
 
 const StyledLink = styled(Link)`
-  font-family: "Bellefair", serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 1.25px;
-  text-transform: uppercase;
   text-decoration: none;
-  text-align: center;
-  color: #0b0d17;
-
-  @media screen and (min-width: 768px) {
-    font-size: 32px;
-    letter-spacing: 2px;
-  }
 `;
