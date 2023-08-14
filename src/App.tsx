@@ -1,17 +1,16 @@
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import GlobalStyles from "./components/GlobalStyles";
-import { Navigate, Route, Routes, useLocation } from "react-router";
-import Home from "./components/Home";
 import styled from "styled-components";
-import { useState } from "react";
+import GlobalStyles from "./components/GlobalStyles";
 import BurgerMenu from "./components/BurgerMenu";
+import Home from "./pages/Home";
 import Destination from "./pages/Destination";
 import Crew from "./pages/Crew";
 import Technology from "./pages/Technology";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Navigate, Route, Routes, useLocation } from "react-router";
+import { useState } from "react";
 
 function App() {
   const [menu, setMenu] = useState<boolean>(false);
-  
 
   const location = useLocation();
   const pathname = location.pathname;

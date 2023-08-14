@@ -3,7 +3,7 @@ import MobileBackground from "../assets/home/background-home-mobile.jpg";
 import TabletBackground from "../assets/home/background-home-tablet.jpg";
 import DesktopBackground from "../assets/home/background-home-desktop.jpg";
 
-import Header from "./Header";
+import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { linkListType } from "../types";
 

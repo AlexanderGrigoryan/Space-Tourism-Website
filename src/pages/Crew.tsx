@@ -1,10 +1,10 @@
 import Header from "../components/Header";
+import Pagination from "../components/Pagination";
 import MobileBackground from "../assets/crew/background-crew-mobile.jpg";
+import data from "../data.json";
 import styled, { css } from "styled-components";
 import { useState } from "react";
-import data from "../data.json";
 import { linkListType } from "../types";
-import Pagination from "../components/Pagination";
 
 interface CrewProps {
   menu: boolean;
@@ -78,40 +78,6 @@ function Crew(props: CrewProps) {
 
 export default Crew;
 
-const TabletFlex = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: 1024px) {
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-  }
-`;
-
-const TabletPagination = styled.div`
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    display: block;
-  }
-`;
-
-const TabletInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    order: 1;
-  }
-
-  @media screen and (min-width: 1440px) {
-    align-items: flex-start;
-  }
-`;
-
 const Container = styled.div`
   background-image: url(${MobileBackground});
   background-repeat: no-repeat;
@@ -138,7 +104,7 @@ const Title = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    /* padding-left: 80px; */
+    padding-left: 165px;
   }
 `;
 
@@ -159,6 +125,92 @@ const Text = styled(Number)`
   font-weight: 400;
   color: #ffffff;
   text-transform: uppercase;
+`;
+
+const TabletFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+`;
+
+interface MemberImageProps {
+  teamMember: string;
+}
+
+const MemberImage = styled.img(
+  (props: MemberImageProps) => css`
+    width: ${props.teamMember === "Douglas Hurley"
+      ? "177.123px"
+      : props.teamMember === "Mark Shuttleworth"
+      ? "153.92px"
+      : props.teamMember === "Victor Glover"
+      ? "180.726px"
+      : "226.147px"};
+    height: 222px;
+
+    @media screen and (min-width: 768px) {
+      order: 2;
+      width: ${props.teamMember === "Douglas Hurley"
+        ? "456.372px"
+        : props.teamMember === "Mark Shuttleworth"
+        ? "416px"
+        : props.teamMember === "Victor Glover"
+        ? "433.09px"
+        : "539.508px"};
+
+      height: ${props.teamMember === "Douglas Hurley"
+        ? "572px"
+        : props.teamMember === "Mark Shuttleworth"
+        ? "532px"
+        : props.teamMember === "Victor Glover"
+        ? "532px"
+        : "532px"};
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: ${props.teamMember === "Douglas Hurley"
+        ? "568.072px"
+        : props.teamMember === "Mark Shuttleworth"
+        ? "453.44px"
+        : props.teamMember === "Victor Glover"
+        ? "554.388px"
+        : "615.567px"};
+
+      height: ${props.teamMember === "Douglas Hurley"
+        ? "712px"
+        : props.teamMember === "Mark Shuttleworth"
+        ? "654px"
+        : props.teamMember === "Victor Glover"
+        ? "681px"
+        : "607px"};
+    }
+  `
+);
+
+const MobilePagination = styled.div`
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const TabletInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    order: 1;
+  }
+
+  @media screen and (min-width: 1440px) {
+    align-items: flex-start;
+  }
 `;
 
 const MemberInfo = styled.div`
@@ -229,62 +281,10 @@ const MemberDescription = styled.p`
   }
 `;
 
-interface MemberImageProps {
-  teamMember: string;
-}
+const TabletPagination = styled.div`
+  display: none;
 
-const MemberImage = styled.img(
-  (props: MemberImageProps) => css`
-    width: ${props.teamMember === "Douglas Hurley"
-      ? "177.123px"
-      : props.teamMember === "Mark Shuttleworth"
-      ? "153.92px"
-      : props.teamMember === "Victor Glover"
-      ? "180.726px"
-      : "226.147px"};
-    height: 222px;
-
-    @media screen and (min-width: 768px) {
-      order: 2;
-      width: ${props.teamMember === "Douglas Hurley"
-        ? "456.372px"
-        : props.teamMember === "Mark Shuttleworth"
-        ? "416px"
-        : props.teamMember === "Victor Glover"
-        ? "433.09px"
-        : "539.508px"};
-
-      height: ${props.teamMember === "Douglas Hurley"
-        ? "572px"
-        : props.teamMember === "Mark Shuttleworth"
-        ? "532px"
-        : props.teamMember === "Victor Glover"
-        ? "532px"
-        : "532px"};
-    }
-
-    @media screen and (min-width: 1440px) {
-      width: ${props.teamMember === "Douglas Hurley"
-        ? "568.072px"
-        : props.teamMember === "Mark Shuttleworth"
-        ? "453.44px"
-        : props.teamMember === "Victor Glover"
-        ? "554.388px"
-        : "615.567px"};
-
-      height: ${props.teamMember === "Douglas Hurley"
-        ? "712px"
-        : props.teamMember === "Mark Shuttleworth"
-        ? "654px"
-        : props.teamMember === "Victor Glover"
-        ? "681px"
-        : "607px"};
-    }
-  `
-);
-
-const MobilePagination = styled.div`
   @media screen and (min-width: 768px) {
-    display: none;
+    display: block;
   }
 `;
