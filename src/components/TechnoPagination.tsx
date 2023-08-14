@@ -85,12 +85,17 @@ const PaginationButton = styled.button(
     text-align: center;
     color: ${props.activeButton ? "#0B0D17" : "#FFFFFF"};
     background: ${props.activeButton ? "#FFFFFF" : "inherit"};
+    transition: all ease 0.5s;
 
     @media screen and (min-width: 768px) {
       width: 60px;
       height: 60px;
       font-size: 24px;
       letter-spacing: 1.5px;
+    }
+
+    &:hover {
+      border: 1px solid rgba(255, 255, 255, 1);
     }
   `
 );

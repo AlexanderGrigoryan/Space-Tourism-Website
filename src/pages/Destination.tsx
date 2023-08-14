@@ -238,10 +238,24 @@ const StyledLink = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   color: #d0d6f9;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
     letter-spacing: 2.7px;
+  }
+
+  &:hover {
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+    }
   }
 `;
 

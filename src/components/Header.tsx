@@ -121,6 +121,19 @@ const StyledLink = styled(Link)`
     font-size: 16px;
     letter-spacing: 2.7px;
   }
+
+  &:hover {
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.5021);
+      position: absolute;
+      bottom: -35px;
+      left: 0;
+    }
+  }
 `;
 
 const ActiveLine = styled.div`

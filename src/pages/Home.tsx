@@ -35,12 +35,11 @@ function Home(props: HomeProps) {
             world experience!
           </Subtext>
         </Info>
-        {/* <Button>
-          <StyledLink to="/destination">Explore</StyledLink>
-        </Button> */}
-
         <StyledLink to="/destination">
-          <Button>Explore</Button>
+          <HoverCircle>
+            Explore
+            <Button></Button>
+          </HoverCircle>
         </StyledLink>
       </Content>
     </Container>
@@ -160,13 +159,13 @@ const Subtext = styled.p`
   }
 `;
 
-const Button = styled.button`
+const HoverCircle = styled.div`
   width: 150px;
   height: 150px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
   background: white;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
   font-family: "Bellefair", serif;
   font-size: 20px;
   font-weight: 400;
@@ -174,6 +173,9 @@ const Button = styled.button`
   text-transform: uppercase;
   text-align: center;
   color: #0b0d17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     width: 242px;
@@ -185,6 +187,49 @@ const Button = styled.button`
   @media screen and (min-width: 1440px) {
     width: 274px;
     height: 274px;
+  }
+
+  &:hover {
+    transform: scale(1);
+  }
+`;
+
+const Button = styled.button`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: white;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    width: 242px;
+    height: 242px;
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 274px;
+    height: 274px;
+  }
+
+  content: "";
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.1036);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  ${HoverCircle}:hover & {
+    opacity: 1;
+    transform: scale(1.4);
   }
 `;
 

@@ -44,7 +44,7 @@ const PaginationContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     margin: 88px 0;
-    column-gap: 25+px;
+    column-gap: 25 + px;
     width: 132px;
     height: 15px;
   }
@@ -61,6 +61,7 @@ const PaginationButton = styled.button(
     border-radius: 50%;
     border: none;
     cursor: pointer;
+    transition: all ease 0.3s;
     background: ${props.activeButton
       ? "#FFFFFF"
       : "rgba(255, 255, 255, 0.174363)"};
@@ -68,6 +69,12 @@ const PaginationButton = styled.button(
     @media screen and (min-width: 1440px) {
       width: 15px;
       height: 15px;
+    }
+
+    &:hover {
+      background: ${!props.activeButton
+        ? "rgba(255, 255, 255, 0.500094)"
+        : "#FFFFFF"};
     }
   `
 );
